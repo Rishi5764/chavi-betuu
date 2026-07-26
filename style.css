@@ -230,3 +230,66 @@ font-family:'Great Vibes',cursive;
 color:#fff;
 
 }
+#musicBtn{
+position:fixed;
+top:20px;
+right:20px;
+z-index:999;
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(10px);
+color:white;
+border:2px solid white;
+padding:12px 20px;
+border-radius:50px;
+cursor:pointer;
+}
+
+.sparkle{
+position:fixed;
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+pointer-events:none;
+animation:spark 1s linear forwards;
+}
+
+@keyframes spark{
+
+0%{
+opacity:1;
+transform:scale(1);
+}
+
+100%{
+opacity:0;
+transform:translateY(-40px) scale(2);
+}
+
+}
+
+.firework{
+
+position:fixed;
+
+font-size:35px;
+
+animation:boom 2s linear forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes boom{
+
+0%{
+transform:scale(.2);
+opacity:1;
+}
+
+100%{
+transform:scale(3);
+opacity:0;
+}
+
+}
