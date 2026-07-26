@@ -1,84 +1,76 @@
-const message = `Dear Chavi,
+const text = `Dear Chavi,
 
 I just want you to know that you never have to face anything alone.
 
 Please don't take too much tension.
 
-No matter what happens, I'll always be with you as your best friend.
+No matter what happens,
+I'll always be with you as your best friend.
 
 I truly believe in you.
 
-Work hard, keep smiling, and make a great career.
+Work hard,
+keep smiling,
+and make a great career.
 
 I know you can achieve everything you dream of.
 
 Thank you for being such an amazing part of my life.
 
-I love you as my best friend, and I hope our friendship stays forever. 🌸
+I love you as my best friend,
+and I hope our friendship stays forever. 🌸
 
 Always with you,
-Rishi ❤️`;
+❤️ Rishi`;
+
+const startBtn = document.getElementById("start");
+const nextBtn = document.getElementById("next");
+const hero = document.querySelector(".hero");
+const letter = document.getElementById("letter");
+const finalPage = document.getElementById("final");
+const typing = document.getElementById("typing");
 
 let i = 0;
 
-window.onload = function () {
-
-setTimeout(() => {
-document.getElementById("loader").style.display = "none";
-}, 2000);
-
-document.getElementById("openBtn").onclick = function () {
-
-document.querySelector(".hero").style.display = "none";
-
-document.getElementById("letter").style.display = "flex";
-
-typing();
-
+startBtn.onclick = () => {
+    hero.style.display = "none";
+    letter.style.display = "flex";
+    typeWriter();
 };
 
-document.getElementById("next").onclick = function () {
-
-document.getElementById("letter").style.display = "none";
-
-document.getElementById("final").style.display = "flex";
-
+nextBtn.onclick = () => {
+    letter.style.display = "none";
+    finalPage.style.display = "flex";
 };
 
-};
+function typeWriter(){
+    if(i < text.length){
+        typing.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,30);
+    }
+}
 
-function typing(){
+function createHeart(){
 
-if(i < message.length){
+    const heart=document.createElement("div");
 
-document.getElementById("typing").innerHTML += message.charAt(i);
+    heart.className="heart";
 
-i++;
+    heart.innerHTML=["💖","❤️","🌸","✨"][Math.floor(Math.random()*4)];
 
-setTimeout(typing,35);
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+    heart.style.fontSize=(20+Math.random()*25)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
 
 }
 
-}
-
-setInterval(() => {
-
-let heart = document.createElement("div");
-
-heart.innerHTML = "💖";
-
-heart.style.position = "fixed";
-
-heart.style.left = Math.random()*100 + "vw";
-
-heart.style.top = "100vh";
-
-heart.style.fontSize = (20 + Math.random()*25)+"px";
-
-heart.style.animation = "float 5s linear";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),5000);
-
-},400);
+setInterval(createHeart,300);
